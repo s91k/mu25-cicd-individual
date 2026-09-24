@@ -8,8 +8,8 @@ spring:
 
   datasource:
     url: jdbc:h2:mem:database
-    username: admin
-    password: password
+    username: ${DB_USERNAME:admin}
+    password: ${DB_PASSWORD:}
     driverClassName: org.h2.Driver
 
   jpa:
