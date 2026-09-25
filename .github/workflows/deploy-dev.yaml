@@ -1,4 +1,4 @@
-name: Deploy development to Render
+name: Publish to DockerHub
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - dev
 
 jobs:
-  build-and-push-backend:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
