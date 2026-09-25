@@ -5,7 +5,7 @@ function App() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch("/api/books")
+    fetch(`${import.meta.env.VITE_API_URL}/books`)
       .then((res) => res.json())
       .then((json) => setBooks(json));
   }, []);

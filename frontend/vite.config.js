@@ -8,9 +8,4 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
-  server: {
-    proxy: {
-      '/api': import.meta.env.VITE_API_URL ?? 'http://localhost:8080',
-    },
-  },
 })
