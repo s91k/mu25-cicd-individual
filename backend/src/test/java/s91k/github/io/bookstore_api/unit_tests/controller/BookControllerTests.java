@@ -33,7 +33,7 @@ public class BookControllerTests {
 
         when(bookService.findAll()).thenReturn(books);
 
-        mockMvc.perform(get("/books"))
+        mockMvc.perform(get("/api/books"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(2));
     }

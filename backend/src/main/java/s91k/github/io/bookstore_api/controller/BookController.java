@@ -10,7 +10,7 @@ import s91k.github.io.bookstore_api.service.BookService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("/api/books")
 public class BookController {
     private final BookService bookService;
 
