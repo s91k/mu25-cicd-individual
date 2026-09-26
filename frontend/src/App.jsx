@@ -1,24 +1,18 @@
-import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom';
+
+import Home from "./Home.jsx";
+import Book from "./Book.jsx";
 import "./App.css";
 
 function App() {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/books`)
-      .then((res) => res.json())
-      .then((json) => setBooks(json));
-  }, []);
 
   return (
-    <>
-      <h1>Bookstore</h1>
-      {books.map((b) => (
-        <div key={b.id}>
-          <h2>{b.name}</h2>
-        </div>
-      ))}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/books/:id" element={<Book/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
