@@ -2,6 +2,7 @@ package s91k.github.io.bookstore_api.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import s91k.github.io.bookstore_api.dto.BookResponse;
@@ -21,5 +22,10 @@ public class BookController {
     @GetMapping
     public ResponseEntity<List<BookResponse>> getBooks(){
         return ResponseEntity.ok(bookService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<BookResponse> getBookById(@PathVariable int id){
+        return ResponseEntity.ok(bookService.findById(id));
     }
 }
