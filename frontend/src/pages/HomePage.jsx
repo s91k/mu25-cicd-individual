@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 
-function Home() {
+function HomePage() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -13,6 +13,7 @@ function Home() {
   return (
     <>
       <h1>Bookstore</h1>
+      <Link to="/cart"><p>Visa kundvagn</p></Link>
       {books.map((b) => (
         <div key={b.id}>
           <Link to={`/books/${b.id}`}>
@@ -25,4 +26,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;

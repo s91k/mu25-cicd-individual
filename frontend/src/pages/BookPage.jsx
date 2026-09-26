@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function Book() {
+function BookPage(props) {
   const { id } = useParams();
   const [book, setBook] = useState();
 
@@ -19,10 +19,11 @@ function Book() {
     <>
       <h1>{book.name}</h1>
       <p>{book.author_name}</p>
+      <button onClick={() => props.addToCart(book)}>Lägg i kundvagn</button>
       <p>{book.releaseDate}</p>
       <p>{book.description}</p>
     </>
   );
 }
 
-export default Book;
+export default BookPage;
