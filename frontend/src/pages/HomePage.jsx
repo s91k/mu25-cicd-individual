@@ -15,7 +15,7 @@ function HomePage() {
       <h1>Bookstore</h1>
       <Link to="/cart"><p>Visa kundvagn</p></Link>
       {books.map((b) => (
-        <div key={b.id}>
+        <div key={b.id} className="book-item">
           <Link to={`/books/${b.id}`}>
             <h2>{b.name}</h2>
           </Link>
