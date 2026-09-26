@@ -1,9 +1,12 @@
-name: Run tests
+name: Run unit and integration tests
 
 on:
   pull_request:
     branches:
       - dev
+    paths:
+      - 'backend/**'
+
 jobs:
   test:
     runs-on: ubuntu-latest
