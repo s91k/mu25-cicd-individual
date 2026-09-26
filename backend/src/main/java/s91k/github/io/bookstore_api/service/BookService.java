@@ -17,4 +17,8 @@ public class BookService {
     public List<BookResponse> findAll(){
         return this.bookRepository.findAll().stream().map(BookResponse::toDto).toList();
     }
+
+    public BookResponse findById(int id){
+        return BookResponse.toDto(this.bookRepository.findById(id).orElseThrow());
+    }
 }
