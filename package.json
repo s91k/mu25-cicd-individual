@@ -1,0 +1,22 @@
+{
+  "name": "mu25-cicd-individual",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s91k/mu25-cicd-individual.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s91k/mu25-cicd-individual/issues"
+  },
+  "homepage": "https://github.com/s91k/mu25-cicd-individual#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.3"
+  }
+}
