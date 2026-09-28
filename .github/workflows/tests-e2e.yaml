@@ -1,0 +1,44 @@
+name: Run end-2-end tests
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build jar
+        working-directory: ./backend
+        run: mvn clean package -DskipTests
+
+      - name: Start backend
+        working-directory: backend
+        run: nohup java -jar target/*.jar &
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+      
+      - name: Start frontend
+        working-directory: frontend
+        run: nohup npm run dev &
+
+      - name: Install end-2-end dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Run end-2-end tests
+        run: npx playwright test

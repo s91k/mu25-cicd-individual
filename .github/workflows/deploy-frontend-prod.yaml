@@ -1,0 +1,15 @@
+name: Deploy frontend to production
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deployment to Render
+        run: curl -X POST ${{ secrets.RENDER_FRONTEND_PROD_DEPLOY_HOOK }}
