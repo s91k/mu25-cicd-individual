@@ -17,6 +17,7 @@ function BookPage(props) {
 
   return (
     <>
+      <title>{book.name}</title>
       <h1>{book.name}</h1>
       <p>{book.author_name}</p>
       <button onClick={() => props.addToCart(book)}>Lägg i kundvagn</button>

@@ -12,7 +12,8 @@ function HomePage() {
 
   return (
     <>
-      <h1>Bookstore</h1>
+      <title>Bokaffär</title>
+      <h1>Bokaffär</h1>
       <Link to="/cart"><p>Visa kundvagn</p></Link>
       {books.map((b) => (
         <div key={b.id} className="book-item">
