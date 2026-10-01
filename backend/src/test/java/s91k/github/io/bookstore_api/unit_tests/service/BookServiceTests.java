@@ -1,11 +1,11 @@
 package s91k.github.io.bookstore_api.unit_tests.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import s91k.github.io.bookstore_api.dto.BookResponse;
 import s91k.github.io.bookstore_api.entity.Author;
 import s91k.github.io.bookstore_api.entity.Book;
 import s91k.github.io.bookstore_api.repository.BookRepository;
@@ -16,9 +16,6 @@ import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 public class BookServiceTests {
@@ -39,9 +36,9 @@ public class BookServiceTests {
 
         when(bookRepository.findAll()).thenReturn(books);
 
-        List<BookResponse> bookResponses = bookService.findAll();
+        List<Book> result = bookService.findAll();
 
-        assertEquals(bookResponses.size(), books.size());
+        assertEquals(result.size(), books.size());
 
         verify(bookRepository, times(1)).findAll();
     }
@@ -53,9 +50,9 @@ public class BookServiceTests {
 
         when(bookRepository.findById(0)).thenReturn(Optional.of(b));
 
-        BookResponse bookResponse = bookService.findById(0);
+        Book result = bookService.findById(0);
 
-        assertEquals(bookResponse.getId(), b.getId());
+        assertEquals(result.getId(), b.getId());
 
         verify(bookRepository, times(1)).findById(0);
     }
@@ -64,7 +61,7 @@ public class BookServiceTests {
     void findByIdShouldThrowExceptionWhenBookDoesNotExist() throws Exception {
         when(bookRepository.findById(0)).thenReturn(Optional.empty());
 
-        assertThrows(NoSuchElementException.class, () -> bookService.findById(0));
+        assertThrows(EntityNotFoundException.class, () -> bookService.findById(0));
 
         verify(bookRepository, times(1)).findById(0);
     }
