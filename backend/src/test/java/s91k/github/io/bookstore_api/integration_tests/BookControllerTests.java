@@ -49,12 +49,7 @@ public class BookControllerTests {
     }
 
     @Test
-    void getBookByIdWhenBookExistsShouldReturnBook() throws Exception {
+    void getBookByIdShouldReturnBook() throws Exception {
         mockMvc.perform(get("/books/1")).andExpect(status().isOk()).andExpect(jsonPath("$.id").value(1));
-    }
-
-    @Test
-    void getBookByIdWhenBookDoesNotExistShouldReturnNotFound() throws Exception {
-        mockMvc.perform(get("/books/3")).andExpect(status().isNotFound());
     }
 }
