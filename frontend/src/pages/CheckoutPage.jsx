@@ -9,7 +9,10 @@ function CheckoutPage(props) {
 
     const requestBody = {
       ...formValues,
-      orderItems: Object.values(props.cart).map((b) => ({ bookId: b.id, quantity: b.quantity })),
+      orderItems: Object.values(props.cart).map((b) => ({
+        bookId: b.id,
+        quantity: b.quantity,
+      })),
     };
 
     await fetch(`${import.meta.env.VITE_API_URL}/orders`, {
@@ -52,7 +55,9 @@ function CheckoutPage(props) {
         <input id="postalCode" name="postalCode" required />
         <label htmlFor="city">Stad</label>
         <input id="city" name="city" required />
-        <button type="submit">Beställ</button>
+        <button id="submit" type="submit">
+          Beställ
+        </button>
       </form>
     </>
   );
