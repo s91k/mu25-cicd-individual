@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import HomePage from "./pages/HomePage.jsx";
 import BookPage from "./pages/BookPage.jsx";
@@ -10,7 +10,17 @@ import OrderPage from "./pages/OrderPage.jsx";
 import "./App.css";
 
 function App() {
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState(() => {
+    try {
+      return JSON.parse(window.localStorage.getItem("cart") || "{}");
+    } catch {
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (book) =>
     setCart((prevCart) => ({
@@ -22,7 +32,8 @@ function App() {
     }));
 
   const removeFromCart = (book) =>
-    setCart((cart) => {
+    setCart((prevCart) => {
+      const cart = { ...prevCart };
       delete cart[book.id];
       return cart;
     });

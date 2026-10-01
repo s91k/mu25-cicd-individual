@@ -32,7 +32,7 @@ function BookPage(props) {
       <h2>Beställda varor:</h2>
       <ul>
         {order.orderItems.map((item) => (
-          <li>
+          <li key={item.bookId}>
             {item.quantity} x {item.bookName}
           </li>
         ))}
