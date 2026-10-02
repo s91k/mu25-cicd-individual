@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import HomePage from "./pages/HomePage.jsx";
@@ -40,21 +40,39 @@ function App() {
 
   const clearCart = () => setCart({});
 
+  const cartItems = Object.values(cart);
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/books/:id" element={<BookPage addToCart={addToCart} />} />
-        <Route
-          path="/cart"
-          element={<CartPage cart={cart} removeFromCart={removeFromCart} />}
-        />
-        <Route
-          path="/checkout"
-          element={<CheckoutPage cart={cart} clearCart={clearCart} />}
-        />
-        <Route path="/orders/:id" element={<OrderPage />} />
-      </Routes>
+      <title>Bokaffär</title>
+      <header>
+        <Link to="/">
+          <h1>Bokaffär</h1>
+        </Link>
+        <Link to="/cart">
+          Kundvagn{" "}
+          {cartItems.length > 0 &&
+            `(${cartItems.reduce((sum, item) => sum + item.quantity, 0)})`}
+        </Link>
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/books/:id"
+            element={<BookPage addToCart={addToCart} />}
+          />
+          <Route
+            path="/cart"
+            element={<CartPage cart={cart} removeFromCart={removeFromCart} />}
+          />
+          <Route
+            path="/checkout"
+            element={<CheckoutPage cart={cart} clearCart={clearCart} />}
+          />
+          <Route path="/orders/:id" element={<OrderPage />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }

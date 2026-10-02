@@ -11,19 +11,16 @@ function HomePage() {
   }, []);
 
   return (
-    <>
-      <title>Bokaffär</title>
-      <h1>Bokaffär</h1>
-      <Link to="/cart">Visa kundvagn</Link>
+    <section className="bookList">
       {books.map((b) => (
-        <div key={b.id} className="book-item">
+        <article key={b.id} className="bookItem">
           <Link to={`/books/${b.id}`}>
             <h2>{b.name}</h2>
           </Link>
           <p>{b.author_name}</p>
-        </div>
+        </article>
       ))}
-    </>
+    </section>
   );
 }
 

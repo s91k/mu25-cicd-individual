@@ -41,19 +41,19 @@ function CheckoutPage(props) {
   return (
     <>
       <title>Kassa</title>
-      <form onSubmit={submitOrder}>
-        <h1>Kassa</h1>
-        <label htmlFor="email">E-mail adress</label>
+      <h2>Kassa</h2>
+      <form class="checkoutForm" onSubmit={submitOrder}>
+        <label htmlFor="email">E-post:</label>
         <input id="email" name="email" type="email" required />
-        <label htmlFor="firstName">Förnamn</label>
+        <label htmlFor="firstName">Förnamn:</label>
         <input id="firstName" name="firstName" required />
-        <label htmlFor="lastName">Efternamn</label>
+        <label htmlFor="lastName">Efternamn:</label>
         <input id="lastName" name="lastName" required />
-        <label htmlFor="streetAddress">Gatuadress</label>
+        <label htmlFor="streetAddress">Gatuadress:</label>
         <input id="streetAddress" name="streetAddress" required />
-        <label htmlFor="postalCode">Postal code</label>
+        <label htmlFor="postalCode">Postnummer:</label>
         <input id="postalCode" name="postalCode" required />
-        <label htmlFor="city">Stad</label>
+        <label htmlFor="city">Stad:</label>
         <input id="city" name="city" required />
         <button id="submit" type="submit">
           Beställ

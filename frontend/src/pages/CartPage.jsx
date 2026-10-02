@@ -6,14 +6,16 @@ function CartPage(props) {
   return (
     <>
       <title>Kundvagn</title>
-      <h1>Kundvagn</h1>
+      <h2>Kundvagn</h2>
       {cartItems.length == 0 && <p>Kundvagnen är tom.</p>}
       <section class="cart">
         {cartItems.map((b) => (
           <article key={b.id}>
-            <h2>{b.name}</h2>
-            <p>{b.author_name}</p>
-            <p>Antal: {b.quantity}</p>
+            <div>
+              <h3>{b.name}</h3>
+              <p>{b.author_name}</p>
+              <p>Antal: {b.quantity}</p>
+            </div>
             <button
               className="removeButton"
               onClick={() => props.removeFromCart(b)}
