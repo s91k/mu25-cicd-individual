@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [books, setBooks] = useState([]);
@@ -11,18 +11,16 @@ function HomePage() {
   }, []);
 
   return (
-    <>
-      <h1>Bookstore</h1>
-      <Link to="/cart"><p>Visa kundvagn</p></Link>
+    <section className="book-list">
       {books.map((b) => (
-        <div key={b.id} className="book-item">
+        <article key={b.id} className="book-item">
           <Link to={`/books/${b.id}`}>
             <h2>{b.name}</h2>
           </Link>
           <p>{b.author_name}</p>
-        </div>
+        </article>
       ))}
-    </>
+    </section>
   );
 }
 

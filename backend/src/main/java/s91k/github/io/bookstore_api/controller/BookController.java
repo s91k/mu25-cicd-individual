@@ -21,11 +21,11 @@ public class BookController {
 
     @GetMapping
     public ResponseEntity<List<BookResponse>> getBooks(){
-        return ResponseEntity.ok(bookService.findAll());
+        return ResponseEntity.ok(bookService.findAll().stream().map(BookResponse::toDto).toList());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<BookResponse> getBookById(@PathVariable int id){
-        return ResponseEntity.ok(bookService.findById(id));
+        return ResponseEntity.ok(BookResponse.toDto(bookService.findById(id)));
     }
 }

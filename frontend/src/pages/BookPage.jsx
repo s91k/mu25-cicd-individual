@@ -11,15 +11,18 @@ function BookPage(props) {
       .then((json) => setBook(json));
   }, []);
 
-  if(book == undefined){
-    return (<p>Laddar...</p>);
+  if (book == undefined) {
+    return <p>Laddar...</p>;
   }
 
   return (
     <>
-      <h1>{book.name}</h1>
+      <title>{book.name}</title>
+      <h2>{book.name}</h2>
       <p>{book.author_name}</p>
-      <button onClick={() => props.addToCart(book)}>Lägg i kundvagn</button>
+      <button className="buy-button" onClick={() => props.addToCart(book)}>
+        Lägg i kundvagn
+      </button>
       <p>{book.releaseDate}</p>
       <p>{book.description}</p>
     </>

@@ -1,31 +1,78 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import HomePage from "./pages/HomePage.jsx";
 import BookPage from "./pages/BookPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
+import CheckoutPage from "./pages/CheckoutPage.jsx";
+import OrderPage from "./pages/OrderPage.jsx";
 
 import "./App.css";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    try {
+      return JSON.parse(window.localStorage.getItem("cart") || "{}");
+    } catch {
+      return {};
+    }
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (book) =>
-    cart.every((c) => c.id != book.id) && setCart((cart) => [...cart, book]);
+    setCart((prevCart) => ({
+      ...prevCart,
+      [book.id]: {
+        ...book,
+        quantity: (prevCart[book.id]?.quantity || 0) + 1,
+      },
+    }));
 
   const removeFromCart = (book) =>
-    setCart((cart) => cart.filter((c) => c != book));
+    setCart((prevCart) => {
+      const cart = { ...prevCart };
+      delete cart[book.id];
+      return cart;
+    });
+
+  const clearCart = () => setCart({});
+
+  const cartItems = Object.values(cart);
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/books/:id" element={<BookPage addToCart={addToCart} />} />
-        <Route
-          path="/cart"
-          element={<CartPage cart={cart} removeFromCart={removeFromCart} />}
-        />
-      </Routes>
+      <title>Bokaffär</title>
+      <header>
+        <Link to="/">
+          <h1>Bokaffär</h1>
+        </Link>
+        <Link to="/cart">
+          Kundvagn{" "}
+          {cartItems.length > 0 &&
+            `(${cartItems.reduce((sum, item) => sum + item.quantity, 0)})`}
+        </Link>
+      </header>
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/books/:id"
+            element={<BookPage addToCart={addToCart} />}
+          />
+          <Route
+            path="/cart"
+            element={<CartPage cart={cart} removeFromCart={removeFromCart} />}
+          />
+          <Route
+            path="/checkout"
+            element={<CheckoutPage cart={cart} clearCart={clearCart} />}
+          />
+          <Route path="/orders/:id" element={<OrderPage />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }
