@@ -17,7 +17,7 @@ function CartPage(props) {
               <p>Antal: {b.quantity}</p>
             </div>
             <button
-              className="removeButton"
+              className="remove-button"
               onClick={() => props.removeFromCart(b)}
             >
               Ta bort

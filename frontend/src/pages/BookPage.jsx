@@ -20,7 +20,7 @@ function BookPage(props) {
       <title>{book.name}</title>
       <h2>{book.name}</h2>
       <p>{book.author_name}</p>
-      <button className="buyButton" onClick={() => props.addToCart(book)}>
+      <button className="buy-button" onClick={() => props.addToCart(book)}>
         Lägg i kundvagn
       </button>
       <p>{book.releaseDate}</p>

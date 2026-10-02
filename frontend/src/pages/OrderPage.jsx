@@ -20,7 +20,7 @@ function BookPage(props) {
       <title>{order.id}</title>
       <h2>Order</h2>
       <p>Ordernummer: {order.id}</p>
-      <p>E-post: {order.email}</p>
+      <p id="email">E-post: {order.email}</p>
       <h3>Leveransadress</h3>
       <p>
         {order.firstName} {order.lastName}

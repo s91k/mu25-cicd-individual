@@ -10,18 +10,18 @@ test('load book list', async ({ page }) => {
 test('add and remove from cart', async ({ page }) => {
   await page.goto('/books/1');
 
-  await page.locator('.buyButton').click();
+  await page.locator('.buy-button').click();
 
   await page.goto('/books/2');
 
-  await page.locator('.buyButton').click();
-  
+  await page.locator('.buy-button').click();
+
   await page.goto('/cart');
 
   await expect(page.locator('.cart > article')).toHaveCount(2);
 
-  await page.locator('.cart > article > .removeButton').first().click();
-  await page.locator('.cart > article > .removeButton').first().click();
+  await page.locator('.cart > article > .remove-button').first().click();
+  await page.locator('.cart > article > .remove-button').first().click();
 
   await expect(page.locator('.cart > article')).toHaveCount(0);
 });
@@ -29,7 +29,7 @@ test('add and remove from cart', async ({ page }) => {
 test('buy book', async ({ page }) => {
   await page.goto('/books/1');
 
-  await page.locator('.buyButton').click();
+  await page.locator('.buy-button').click();
 
   await page.goto('/checkout');
 
@@ -42,5 +42,5 @@ test('buy book', async ({ page }) => {
   await page.locator('#submit').click();
 
   await expect(page).toHaveURL(/\/orders\//);
-  await expect(page.locator('h1').first()).toHaveText("Order")
+  await expect(page.locator('#email').first()).toContainText("test@test.com");
 });
