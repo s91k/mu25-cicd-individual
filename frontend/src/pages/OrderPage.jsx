@@ -18,10 +18,10 @@ function BookPage(props) {
   return (
     <>
       <title>{order.id}</title>
-      <h1>Order</h1>
+      <h2>Order</h2>
       <p>Ordernummer: {order.id}</p>
       <p>E-post: {order.email}</p>
-      <h2>Leveransadress</h2>
+      <h3>Leveransadress</h3>
       <p>
         {order.firstName} {order.lastName}
       </p>
@@ -29,7 +29,7 @@ function BookPage(props) {
       <p>
         {order.postalCode} {order.city}
       </p>
-      <h2>Beställda varor:</h2>
+      <h3>Beställda varor</h3>
       <ul>
         {order.orderItems.map((item) => (
           <li key={item.bookId}>
