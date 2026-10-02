@@ -42,7 +42,7 @@ function CheckoutPage(props) {
     <>
       <title>Kassa</title>
       <h2>Kassa</h2>
-      <form class="checkoutForm" onSubmit={submitOrder}>
+      <form class="checkout-form" onSubmit={submitOrder}>
         <label htmlFor="email">E-post:</label>
         <input id="email" name="email" type="email" required />
         <label htmlFor="firstName">Förnamn:</label>

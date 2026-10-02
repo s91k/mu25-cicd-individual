@@ -11,9 +11,9 @@ function HomePage() {
   }, []);
 
   return (
-    <section className="bookList">
+    <section className="book-list">
       {books.map((b) => (
-        <article key={b.id} className="bookItem">
+        <article key={b.id} className="book-item">
           <Link to={`/books/${b.id}`}>
             <h2>{b.name}</h2>
           </Link>
