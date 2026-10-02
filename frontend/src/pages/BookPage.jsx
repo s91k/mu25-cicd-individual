@@ -23,7 +23,7 @@ function BookPage(props) {
       <button className="buy-button" onClick={() => props.addToCart(book)}>
         Lägg i kundvagn
       </button>
-      <p>{book.releaseDate}</p>
+      <p>Utgivningsdatum: {new Date(book.releaseDate).toLocaleDateString()}</p>
       <p>{book.description}</p>
     </>
   );
