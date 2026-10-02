@@ -1,4 +1,4 @@
-# MU25 Countinous integration och test - Individuell inlämning
+# MU25 Countinous integration och test - Individuell uppgift
 
 ## Om applikationen
 
@@ -32,7 +32,7 @@ GitHub Actions kör automatiska tester och driftsättningar:
 - En pull request till `dev` som ändrar filer under `backend/` kör backendens Maven-tester (`mvn clean test`).
 - En pull request till `main` kör end-to-end-tester: bygger backend, startar backend och frontend, installerar Playwright och kör testerna.
 - En push till `dev` som ändrar `backend/` bygger en Docker-image, publicerar den till Docker Hub med taggen `dev` och triggar driftsättning av backend på Render.
-- En push till `main` som ändrar `backend/` gör motsvarande med taggen `prod` och produktionsmiljön på Render.
+- En push till `main` som ändrar `backend/` kopierar den existerande Docker-image:n med taggen `dev` till en image med taggen `prod`.
 - En push till `dev` eller `main` som ändrar `frontend/` triggar driftsättning av frontend till motsvarande Render-miljö.
 
 GitHub Secrets används för Docker Hub-uppgifter och Render deploy hooks.
