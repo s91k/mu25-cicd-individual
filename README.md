@@ -41,10 +41,12 @@ GitHub Secrets används för Docker Hub-uppgifter och Render deploy hooks.
 
 ### Produktion
 
-Frontend: `https://bookstore-frontend-prod.onrender.com`
-Backend: `https://bookstore-backend-prod.onrender.com`
+Frontend: [https://bookstore-frontend-prod.onrender.com](https://bookstore-frontend-prod.onrender.com)
+
+Backend: [https://bookstore-backend-prod.onrender.com](https://bookstore-backend-prod.onrender.com)
 
 ### Development
 
-Frontend: `https://mu25-cicd-individual.onrender.com`
-Backend: `https://bookstore-backend-dev-65tv.onrender.com`
+Frontend: [https://mu25-cicd-individual.onrender.com](https://mu25-cicd-individual.onrender.com)
+
+Backend: [https://bookstore-backend-dev-65tv.onrender.com](https://bookstore-backend-dev-65tv.onrender.com)
