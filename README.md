@@ -1,4 +1,4 @@
-# MU25 Countinous integration och test - Individuell uppgift
+# MU25 Continuous integration och test - Individuell uppgift
 
 ## Om applikationen
 
